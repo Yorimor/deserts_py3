@@ -1,7 +1,10 @@
 # coding: utf-8
 
 # In[59]:
-import language
+try:
+    from . import language
+except ImportError:
+    import language
 
 import numpy as np
 import matplotlib as mpl
@@ -22,7 +25,7 @@ tex = True
 if tex:
     plt.rcParams['text.usetex'] = False
     plt.rcParams['text.latex.unicode'] = True
-    plt.rcParams['font.family'] = 'palatino'
+    # plt.rcParams['font.family'] = 'palatino'
 else:
     plt.rcParams['font.family'] = "Palatino Linotype"
 
@@ -889,8 +892,7 @@ class MapGrid(object):
 if __name__ == '__main__':
     modes = ["shore", "island", "mountain", "desert"]
     for i in range(100):
-        # mode = modes[i%4]
-        mode = "/".join(modes)
+        mode = modes[i%4]
         plt.close('all')
         while True:
             print(mode, i)
